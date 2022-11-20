@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+    --dark-1: #101d2e;
+    --dark-2: #0f1c2d;
+    --dark-3: #1e2a39;
+    --grey-1: #6f7781;
+    --grey-2: #626a7f;
+    --dull-purple: #7f31ff;
+    --strong-purple: #8f00ff;
+    --soft-purple: #f9faff;
+    --noto-sans: 'Noto Sans', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
+}
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.breadcrumb-section .breadcrumb-item a{
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--dark-1);
+}
+
+.breadcrumb-section .breadcrumb-item + .breadcrumb-item::before {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.breadcrumb-section .breadcrumb-item.active {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0c0d36;
+}
+
+.carousel-cell {
+    width: 28%;
+    height: 200px;
+    margin-right: 10px;
+    background: #8C8;
+    border-radius: 5px;
+    counter-increment: carousel-cell;
+}
+
+.carousel-cell.is-selected {
+    background: #ED2;
+}
+
+.carousel-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(carousel-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
+
+.detail-product .card-detail-product{
+    min-height : 300px;
+    background: #fff;
+    border-radius: 12px;
+}
+.detail-product .card-detail-product {
+    box-shadow: 0px 4px 40px rgba(172, 172, 172, 0.15);
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+.detail-product .card-detail-product .product-name{
+    font: 600 1.50rem/1.90rem "Poppins", sans-serif;
+}
+
+.detail-product .card-detail-product .desc-product{
+    color: #ADB2B8;
+}
+
+.detail-product .card-detail-product .price-product{
+    font: 500 1.25rem/1.90rem "Poppins", sans-serif;
+    color: #121213;
+}
+
+.detail-product .card-detail-product .stock-product{
+    font: 400 1rem/1.90rem "Poppins", sans-serif;
+}
+
+.detail-product .card-detail-product .btn-add-cart{
+    background-color: var(--dull-purple);
+    color: #fff;
+    font: 600 1rem/1.90rem "Poppins", sans-serif;
+}
+.detail-product input[type="radio"]:checked+.detail-size-card{
+    border: 2px solid var(--dull-purple);
+    color: var(--dull-purple);
+    width: 50px;
+    text-align: center;
+    background-color: rgba(0, 186, 255, 0.05);
+}
+
+.detail-product .detail-size-card {
+    border: 2px solid #000000;
+    border-radius: 6px;
+    max-width: 100px;
+
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+
+
