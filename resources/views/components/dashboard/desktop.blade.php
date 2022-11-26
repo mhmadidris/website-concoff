@@ -69,8 +69,8 @@
         </ul>
 
         <ul>
-            {{-- Article Nav --}}
-            @if (Auth::user()->hasRole('admin'))
+            {{-- Voucher Nav --}}
+            @if (Auth::user()->hasRole('coffeshop'))
             <li class="relative px-6 py-3">
 
                 @if (request()->is('dashboard/article') || request()->is('dashboard/article/*') || request()->is('dashboard/*/article') || request()->is('dashboard/*/article/*'))
@@ -93,6 +93,7 @@
             @endif
 
             {{-- Profile Nav --}}
+            @if (Auth::user()->hasRole('admin'))
             <li class="relative px-6 py-3">
 
                 @if (request()->is('dashboard/profile') || request()->is('dashboard/profile/*') || request()->is('dashboard/*/profile') || request()->is('dashboard/*/profile/*'))
@@ -101,7 +102,6 @@
 
                     <span class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-serv-bg" aria-hidden="true"></span>
                     <!-- Active Icons -->
-
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#082431" xmlns="http://www.w3.org/2000/svg">
                         <rect width="24" height="24" fill="white" />
                         <circle cx="10.5" cy="5.5" r="2.75" stroke="#082431" stroke-width="1.5" />
@@ -135,8 +135,9 @@
                 </a>
                 @endif
             </li>
+            @endif
 
-            {{-- Product Nav --}}
+            {{-- Coffee Shop Nav --}}
             @if (Auth::user()->hasRole('admin'))
             <li class="relative px-6 py-3">
 
@@ -146,25 +147,17 @@
 
                     <span class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-serv-bg" aria-hidden="true"></span>
                     <!-- Active Icons -->
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.25" y="1.25" width="19.5" height="21.5" rx="4.75" fill="#082431" stroke="#082431" stroke-width="1.5" />
-                        <rect x="11" y="7" width="2" height="10" rx="1" fill="white" />
-                        <rect x="17" y="11" width="2" height="10" rx="1" transform="rotate(90 17 11)" fill="white" />
-                    </svg>
+                    <img class="" src="{{ asset('concoff/store_bold.png') }}" style="width: 24px;" />
 
-                    <span class="ml-4">Product</span>
+                    <span class="ml-4">Coffee Shop</span>
 
                 </a>
                 @else
                 <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{ route('dashboard.product.index') }}">
 
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.25" y="1.25" width="19.5" height="21.5" rx="4.75" stroke="#082431" stroke-width="1.5" />
-                        <rect x="11.3" y="7" width="1.4" height="10" rx="0.7" fill="#082431" />
-                        <rect x="17" y="11" width="1.4" height="10" rx="0.7" transform="rotate(90 17 11)" fill="#082431" />
-                    </svg>
+                    <img class="" src="{{ asset('concoff/store_outline.png') }}" style="width: 24px;" />
 
-                    <span class="ml-4">Product</span>
+                    <span class="ml-4">Coffee Shop</span>
                 </a>
                 @endif
 
@@ -173,60 +166,60 @@
             @endif
 
             {{-- Report Nav --}}
-            @if (Auth::user()->hasRole('admin'))
+            {{-- @if (Auth::user()->hasRole('admin'))
             <li class="relative px-6 py-3">
 
                 @if (request()->is('dashboard/laporan') || request()->is('dashboard/laporan/*') || request()->is('dashboard/*/laporan') || request()->is('dashboard/*/laporan/*'))
                 <a class="inline-flex items-center w-full text-sm font-medium transition-colors duration-150 hover:text-gray-800 " href="{{ route('dashboard.laporan.index') }}">
 
 
-                    <span class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-serv-bg" aria-hidden="true"></span>
-                    <!-- Active Icons -->
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABIklEQVRIie3VQSsFURQH8N+bJpFS2PkIL8qSZCcWvoNsrbGWndjbCEuU76Cs7CzICh9AUain9MJiZjT03rvTc9/Ov04z/c+c859z7r3n8o8AaqX3TSxGyvuGBTTSEnmM60gCr2hAWeAN95EE3tGXPw3iDJ+R7QGzsNaD5IVdpaiXStvBI0ax/udGUU/83EkFWnHdIIFD1co9woys4lW8VIyrJLDb4u+m0Ywh8ISRNi04CAkknRqY4zQXaYX9UHAVgbsOvtsYAv0dfAMxBKa69H0jtMgfbRIluAzEVlrkGvYw9iv5NiZDwWnogxzjuJHtqGfM51wlVD3JIdvCsGyOnRd8KrsHYmAFc7L2TeRcg+ya7NW4Pimm5hKWMRSpmiYusPEFEl++fmXudZkAAAAASUVORK5CYII=" />
-                    <span class="ml-4">Report</span>
-                </a>
-                @else
-                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{ route('dashboard.laporan.index') }}">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABhElEQVRIie3Vv0uVURzH8ddzewY1LGxNJIkbUUPQaEulgzSEtEVzWxFStERLLUGD4FpBguAWKP5Y3PwDooYiBCGjJUga4kmltOGcC0+32z2X7jP6gQOH76/3+R7ODw6UUFaaz6FeUd11XIe8ZJzGYEWAT41JA3AIW9itCPA91vyVYRgrGMJ2RYAebGI8wyx2cBN7FQFqeIG8hjNYRC8e4wludAnYwwLO5sJJ2u8g6TjG4nwVnxPx+7G215hIBN9GgbU4CtxK5EzE2knANXzDpZJtNNra5XUEyPAhdtCsO3jvz8v6F6DWZgVwGifxvIXvmXDzT7UrkAKcwEf8aOErom+4G8AO+tv4j0hczhTgDY4J29SsOgbwthvAV8zjUZM9i7ZXwhv23wCYxGW8FFZdxwwu4m4quRPAJi4IW/UujqMYUXqW/6U8FRC1gaul+J8tYmZxRTgY58qAAn0dgloVbugepoRT9QWHUeRYxkPhg6jqPziPB5jJhC7uC+31VATYxhKe/gY7CEzT+6WgsAAAAABJRU5ErkJggg==" />
+            <span class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-serv-bg" aria-hidden="true"></span>
+            <!-- Active Icons -->
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABIklEQVRIie3VQSsFURQH8N+bJpFS2PkIL8qSZCcWvoNsrbGWndjbCEuU76Cs7CzICh9AUain9MJiZjT03rvTc9/Ov04z/c+c859z7r3n8o8AaqX3TSxGyvuGBTTSEnmM60gCr2hAWeAN95EE3tGXPw3iDJ+R7QGzsNaD5IVdpaiXStvBI0ax/udGUU/83EkFWnHdIIFD1co9woys4lW8VIyrJLDb4u+m0Ywh8ISRNi04CAkknRqY4zQXaYX9UHAVgbsOvtsYAv0dfAMxBKa69H0jtMgfbRIluAzEVlrkGvYw9iv5NiZDwWnogxzjuJHtqGfM51wlVD3JIdvCsGyOnRd8KrsHYmAFc7L2TeRcg+ya7NW4Pimm5hKWMRSpmiYusPEFEl++fmXudZkAAAAASUVORK5CYII=" />
+            <span class="ml-4">Report</span>
+            </a>
+            @else
+            <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{ route('dashboard.laporan.index') }}">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABhElEQVRIie3Vv0uVURzH8ddzewY1LGxNJIkbUUPQaEulgzSEtEVzWxFStERLLUGD4FpBguAWKP5Y3PwDooYiBCGjJUga4kmltOGcC0+32z2X7jP6gQOH76/3+R7ODw6UUFaaz6FeUd11XIe8ZJzGYEWAT41JA3AIW9itCPA91vyVYRgrGMJ2RYAebGI8wyx2cBN7FQFqeIG8hjNYRC8e4wludAnYwwLO5sJJ2u8g6TjG4nwVnxPx+7G215hIBN9GgbU4CtxK5EzE2knANXzDpZJtNNra5XUEyPAhdtCsO3jvz8v6F6DWZgVwGifxvIXvmXDzT7UrkAKcwEf8aOErom+4G8AO+tv4j0hczhTgDY4J29SsOgbwthvAV8zjUZM9i7ZXwhv23wCYxGW8FFZdxwwu4m4quRPAJi4IW/UujqMYUXqW/6U8FRC1gaul+J8tYmZxRTgY58qAAn0dgloVbugepoRT9QWHUeRYxkPhg6jqPziPB5jJhC7uC+31VATYxhKe/gY7CEzT+6WgsAAAAABJRU5ErkJggg==" />
 
-                    <span class="ml-4">Report</span>
-                </a>
-                @endif
+                <span class="ml-4">Report</span>
+            </a>
+            @endif
 
 
             </li>
-            @endif
+            @endif --}}
 
             {{-- Transaction Nav --}}
-            <li class="relative px-6 py-3">
+            {{-- <li class="relative px-6 py-3">
 
                 @if (request()->is('dashboard/transaction') || request()->is('dashboard/transaction/*') || request()->is('dashboard/*/transaction') || request()->is('dashboard/*/transaction/*'))
                 <span class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg bg-serv-bg" aria-hidden="true"></span>
 
                 <a class="inline-flex items-center w-full text-sm font-medium transition-colors duration-150 hover:text-gray-800 " href="{{ route('dashboard.transaction.index') }}">
 
-                    <!-- Active Icons -->
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="2" width="18" height="20" rx="4" fill="#082431" />
-                        <line x1="7.75" y1="7.25" x2="10.25" y2="7.25" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                        <line x1="7.75" y1="11.25" x2="16.25" y2="11.25" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                        <line x1="7.75" y1="15.25" x2="16.25" y2="15.25" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                    </svg>
-                    <span class="ml-4">Transaction</span>
+            <!-- Active Icons -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="2" width="18" height="20" rx="4" fill="#082431" />
+                <line x1="7.75" y1="7.25" x2="10.25" y2="7.25" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="7.75" y1="11.25" x2="16.25" y2="11.25" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="7.75" y1="15.25" x2="16.25" y2="15.25" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <span class="ml-4">Transaction</span>
 
-                </a>
-                @else
-                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{ route('dashboard.transaction.index') }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3.25" y="2.25" width="17.5" height="19.5" rx="4.75" stroke="#082431" stroke-width="1.5" />
-                        <line x1="7.75" y1="7.25" x2="10.25" y2="7.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
-                        <line x1="7.75" y1="11.25" x2="16.25" y2="11.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
-                        <line x1="7.75" y1="15.25" x2="16.25" y2="15.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
-                    </svg>
-                    <span class="ml-4">Transaction</span>
-                </a>
-                @endif
-            </li>
+            </a>
+            @else
+            <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{ route('dashboard.transaction.index') }}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3.25" y="2.25" width="17.5" height="19.5" rx="4.75" stroke="#082431" stroke-width="1.5" />
+                    <line x1="7.75" y1="7.25" x2="10.25" y2="7.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="7.75" y1="11.25" x2="16.25" y2="11.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="7.75" y1="15.25" x2="16.25" y2="15.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                <span class="ml-4">Transaction</span>
+            </a>
+            @endif
+            </li> --}}
 
             {{-- Logout Nav --}}
             <li class="relative px-6 py-3">

@@ -6,8 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "alexpechkarev/google-maps": "^9.0",
         "barryvdh/laravel-dompdf": "^1.0",
         "google/cloud-firestore": "^1.26",
+        "google/cloud-storage": "^1.29",
         "grpc/grpc": "1.38",
         "guzzlehttp/guzzle": "^7.2",
         "kreait/laravel-firebase": "^4.2",

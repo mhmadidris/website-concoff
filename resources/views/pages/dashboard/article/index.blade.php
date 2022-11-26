@@ -12,7 +12,7 @@
                     ConCoff Voucher
                 </h2>
                 <p class="text-sm text-gray-400">
-                    Total Voucher
+                    {{ $article->count() }} Total Voucher
                 </p>
             </div>
             <div class="col-span-4 lg:text-right">
@@ -30,9 +30,12 @@
                 <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
                     <!--Card 1-->
                     @foreach ($article as $a)
+                    {{-- @php
+                    dd($a->resource->data()['key']);
+                    @endphp --}}
                     <div class="rounded overflow-hidden shadow-lg bg-white">
                         <div class="flex flex-row justify-between items-center py-2 px-3">
-                            <h2 class="font-semibold text-lg">Article</h2>
+                            <h2 class="font-semibold text-lg">Voucher</h2>
 
                             <style>
                                 .b1 {
@@ -55,7 +58,7 @@
 
                             <div class="flex flex-row">
                                 <div class="mr-2 b1">
-                                    <a href="{{ route('dashboard.article.edit', $a->id) }}">
+                                    <a href="">
                                         <img src="https://img.icons8.com/ios-glyphs/22/undefined/edit--v1.png" />
                                     </a>
                                 </div>
@@ -71,9 +74,7 @@
 
                                 <div class="vl" class="h-full"></div>
 
-                                <form action="{{ route('dashboard.article.destroy', $a->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                                <form action="" method="POST">
 
                                     <button type="submit" class="ml-2 b2">
                                         <img src="https://img.icons8.com/small/22/undefined/filled-trash.png" />
@@ -82,29 +83,17 @@
                             </div>
                         </div>
 
-                        @php
-                        $getImage = json_decode($a->image);
-                        @endphp
-
-                        <img class="object-scale-down h-40 w-full" src="{{ asset('/storage/articles/images/' . $getImage) }}" alt="Image">
                         <div class="px-6 py-4">
-                            {{-- Logo Header --}}
-                            @if ($a->logo_header != null)
-                            <a href="{{ route('dashboard.article.show', $a->id) }}">
-                                <img class="w-24 mb-2" src="{{ asset('/storage/articles/logo/' . json_decode($a->logo_header, true)) }}" alt="Logo Header">
-                            </a>
-                            @endif
+                            <img class="w-24 mb-2" style="margin: auto;" src="{{ asset('concoff/Ticket.svg') }}" alt="Logo Header">
 
                             {{-- Title Header --}}
-                            @if ($a->title_header != null)
-                            <a href="{{ route('dashboard.article.show', $a->id) }}">
+                            <a href="">
                                 <div class="font-bold text-xl mb-2">
-                                    {{ \Illuminate\Support\Str::limit($a->title_header, 40, $end = '...') }}
+                                    {{ $a['titleVoucher'] }}
                                 </div>
                             </a>
-                            @endif
                             <p class="text-gray-700 text-base" style="text-align: justify;">
-                                {{ \Illuminate\Support\Str::limit($a->desc, 150, $end = '...') }}
+                                {{ \Illuminate\Support\Str::limit($a['desc'], 150, $end = '...') }}
                             </p>
                         </div>
                     </div>

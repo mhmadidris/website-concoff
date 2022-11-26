@@ -4,7 +4,7 @@
             <div class="d-flex flex-lg-row flex-column" style="margin-bottom: 5rem">
                 <div class="left-col">
                     <a href="/">
-                        <img class="py-10" src="{{ asset('frontend/images/main-logo.png') }}" alt="main-logo" width="75" />
+                        <img class="py-10" src="{{ asset('concoff/Logo_concoff.svg') }}" alt="main-logo" width="75" />
                     </a>
 
                     {{-- <svg width="119" height="30" viewBox="0 0 119 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@
                             fill="#9D3AFF" />
                     </svg> --}}
                     <h5 class="caption-font">
-                        Bertjorak is an everyday fashion brand with bright and pop colors, while also portraying the essence of quirkiness. Inspired by the diversity of Indonesia’s colors of its cultures, we express a variety of philosophies through different splash of eccentric colors with the intention to spread positive energy and youthfulness across all fashion savvy and people in Indonesia.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </h5>
                 </div>
                 <div class="right-col">
@@ -71,7 +71,7 @@
                         $year = date('Y');
                         @endphp
                         <b>
-                            <p>© {{ $year }} with Bertjorak. All rights reserved.</p>
+                            <p>© {{ $year }} with ConCoff. All rights reserved.</p>
                         </b>
                     </nav>
                     <div class="d-flex footer-icon align-items-center mb-2 mb-md-0 gap-4">

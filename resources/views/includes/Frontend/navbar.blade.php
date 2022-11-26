@@ -77,7 +77,7 @@ Have anything in mind? Just simply ask us any of your curiosity." target="_blank
 
                             @auth
                             {{-- Buyer --}}
-                            @if (Auth::user()->hasRole('buyer'))
+                            @if (Auth::user()->hasRole('coffeshop'))
                             @if (Auth::user()->avatar != null)
                             <a class="nav-link " href="{{ route('dashboard.index') }}" data-bs-toggle="dropdown">
                                 <img src="{{ asset('/storage/account/' . Auth::user()->id . '/avatar/' . Auth::user()->avatar) }}" class="me-2 rounded-full" alt="icon-user" width="45" height="45">
@@ -174,7 +174,7 @@ Have anything in mind? Just simply ask us any of your curiosity." target="_blank
 
                 @auth
                 {{-- Buyer --}}
-                @if (Auth::user()->hasRole('buyer'))
+                @if (Auth::user()->hasRole('coffeshop'))
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                     <li class="nav-item me-2 dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown">
@@ -222,15 +222,12 @@ Have anything in mind? Just simply ask us any of your curiosity." target="_blank
                             </a>
                     </li> --}}
                 </ul>
-                </li>
-                </ul>
-                <a class="nav-link" href="{{ route('cart.index') }}">
-                    <div class="d-flex">
-                        <img src="{{ asset('frontend/images/icon-cart.svg') }}" alt="cart-icon" />
-                        <livewire:cart.count-cart />
-                    </div>
-                    {{-- <div class="cart-badge">3</div> --}}
-                </a>
+                {{-- <a class="nav-link" href="{{ route('cart.index') }}">
+                <div class="d-flex">
+                    <img src="{{ asset('frontend/images/icon-cart.svg') }}" alt="cart-icon" />
+                    <livewire:cart.count-cart />
+                </div>
+                </a> --}}
 
                 {{-- Admin --}}
                 @else

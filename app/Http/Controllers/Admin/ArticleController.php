@@ -10,6 +10,7 @@ use Auth;
 use Kreait\Firebase\Factory;
 use App\Models\Firestore;
 use Google\Cloud\Firestore\FirestoreClient;
+use Google\Cloud\Firestore\DocumentSnapshot;
 
 class ArticleController extends Controller
 {
@@ -17,32 +18,22 @@ class ArticleController extends Controller
 
   public function index()
   {
-    $data = app("firebase.firestore")
-      ->database()
-      ->collection("voucher")
-      ->documents();
-
-    if ($data->isEmpty()) {
-      return collect();
-    }
-
-    $categories = collect($data->rows());
-
-    dd($categories);
-
-    $db = new Firestore();
-    $collection = $db->setCollectionName("voucher");
-
     if (Auth::user()->hasRole("admin")) {
-      dd($collection->setDocumentName("2baf22976c4b4936baf8")->getData());
-      return view("pages.dashboard.article.index")->with("article", $asas);
+      $data = app("firebase.firestore")
+        ->database()
+        ->collection("voucher")
+        ->documents();
 
-      //   $dataArticle = Article::all();
+      if ($data->isEmpty()) {
+        return collect();
+      }
 
-      //   return view("pages.dashboard.article.index")->with(
-      //     "article",
-      //     $dataArticle
-      //   );
+      $categories = collect($data->rows());
+
+      return view("pages.dashboard.article.index")->with(
+        "article",
+        $categories
+      );
     } else {
       return redirect()->back();
     }
@@ -184,6 +175,7 @@ class ArticleController extends Controller
         ->database()
         ->collection("voucher")
         ->newDocument();
+
       $factory->set([
         "titleVoucher" => $request->headline,
         "coins" => $request->coins,
@@ -201,30 +193,37 @@ class ArticleController extends Controller
   public function destroy($id)
   {
     if (Auth::user()->hasRole("admin")) {
-      $data = Article::findOrFail($id);
+      $data = app("firebase.firestore")
+        ->database()
+        ->collection("voucher")
+        ->documents($id)
+        ->delete();
 
-      $dataLogo = json_decode($data->logo_header, true);
-      $dataImage = json_decode($data->image, true);
+      //   $data = Article::findOrFail($id);
 
-      // Delete Logo Header
-      File::delete(storage_path() . "/app/public/articles/logo/" . $dataLogo);
+      //   $dataLogo = json_decode($data->logo_header, true);
+      //   $dataImage = json_decode($data->image, true);
 
-      // Delete Image
-      File::delete(
-        storage_path() . "/app/public/articles/images/" . $dataImage
-      );
+      //   // Delete Logo Header
+      //   File::delete(storage_path() . "/app/public/articles/logo/" . $dataLogo);
 
-      if ($data->delete()) {
-        return redirect()
-          ->route("dashboard.article.index")
-          ->withToastSuccess("Article deleted successfully");
-      } else {
-        return redirect()
-          ->route("dashboard.article.index")
-          ->withToastError("Article failed delete");
-      }
-    } else {
-      return redirect()->back();
+      //   // Delete Image
+      //   File::delete(
+      //     storage_path() . "/app/public/articles/images/" . $dataImage
+      //   );
+
+      //   if ($data->delete()) {
+      //     return redirect()
+      //       ->route("dashboard.article.index")
+      //       ->withToastSuccess("Article deleted successfully");
+      //   } else {
+      //     return redirect()
+      //       ->route("dashboard.article.index")
+      //       ->withToastError("Article failed delete");
+      //   }
+      // } else {
+      //   return redirect()->back();
+      // }
     }
   }
 }
