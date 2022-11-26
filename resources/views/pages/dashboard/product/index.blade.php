@@ -32,8 +32,7 @@
                     <table class="w-full" aria-label="Table">
                         <thead>
                             <tr class="text-sm font-normal text-left text-gray-900 border-b border-b-gray-600">
-                                <th class="py-4" scope="">Thumbnail</th>
-                                <th class="py-4" scope="">Name</th>
+                                <th class="py-4" scope="">Coffeshop</th>
                                 <th class="py-4" scope="">Latitude</th>
                                 <th class="py-4" scope="">Longitude</th>
                                 <th class="py-4" scope="">Action</th>
@@ -66,48 +65,45 @@
 
 
                                         </div>
-                                        {{-- <div class="ml-2">
-                                            <a href="{{ route('detail.show', $d->id_product) }}" class="font-medium text-black">
-                                        {{ $d->title }}
-                                        </a>
-                                    </div> --}}
-                </div>
-                </td>
-                <td class="px-1 py-5 text-sm">
-                    {{ $d['nameCoffeeShop'] }}
-                </td>
-                <td class="px-1 py-5 text-sm">
-                    {{ $d['location']->latitude() . "° S" }}
-                </td>
-                <td class="px-1 py-5 text-sm">
-                    {{ $d['location']->longitude() . "° E" }}
-                </td>
-                {{-- <td class="px-1 py-5 text-sm">
+                                        <div class="ml-2">
+                                            <a href="{{ route('detail.show', $d->id()) }}" class="font-medium text-black">
+                                                {{ $d['nameCoffeeShop'] }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-1 py-5 text-sm">
+                                    {{ $d['location']->latitude() . "° S" }}
+                                </td>
+                                <td class="px-1 py-5 text-sm">
+                                    {{ $d['location']->longitude() . "° E" }}
+                                </td>
+                                {{-- <td class="px-1 py-5 text-sm">
                     <a href="{{ route('dashboard.product.edit', $d->id_product) }}" class="px-4 py-2 mt-2 text-left text-white rounded-xl bg-serv-email">
-                Edit Product
-                </a>
-                </td>
-                <td class="px-1 py-5 text-sm">
-                    <form action="{{ route('dashboard.product.destroy', $d->id_product) }}" method="post">
-                        @csrf
-                        @method('DELETE')
+                                Edit Product
+                                </a>
+                                </td>
+                                <td class="px-1 py-5 text-sm">
+                                    <form action="{{ route('dashboard.product.destroy', $d->id_product) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
 
-                        <button class="btn btn-danger show-alert-delete-box" type="submit">Hapus</button>
-                    </form>
-                </td> --}}
-                </tr>
-                @endforeach
-                </tbody>
-                </table>
-        </div>
-        {{-- @else
+                                        <button class="btn btn-danger show-alert-delete-box" type="submit">Hapus</button>
+                                    </form>
+                                </td> --}}
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                {{-- @else
                 <h1>Product Belum ada</h1>
                 @endif
                 <br>
                 {{ $data->links('pagination::simple-tailwind') }} --}}
-</main>
-</div>
-</section>
+            </main>
+        </div>
+    </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
