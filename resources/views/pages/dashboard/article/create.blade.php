@@ -78,10 +78,20 @@
                                     {{-- Description --}}
                                     <div class="col-span-6">
                                         <label for="desc" class="block mb-3 font-medium text-gray-700 text-md">Description</label>
-                                        <textarea name="desc" id="desc" placeholder="Description of article" cols="30" rows="10" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm" value="{{ old('desc') }}"></textarea>
+                                        <textarea name="desc" id="desc" placeholder="Description of voucher" cols="30" rows="10" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm" value="{{ old('desc') }}"></textarea>
 
                                         @if ($errors->has('desc'))
                                         <p class="text-red-500 mb-3 text-sm">{{ $errors->first('desc') }}</p>
+                                        @endif
+                                    </div>
+
+                                    {{-- Terms & Condition --}}
+                                    <div class="col-span-6">
+                                        <label for="terms" class="block mb-3 font-medium text-gray-700 text-md">Terms & Condition</label>
+                                        <textarea name="terms" id="terms" placeholder="Terms of the voucher" cols="30" rows="10" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm" value="{{ old('terms') }}"></textarea>
+
+                                        @if ($errors->has('terms'))
+                                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('terms') }}</p>
                                         @endif
                                     </div>
                                 </div>

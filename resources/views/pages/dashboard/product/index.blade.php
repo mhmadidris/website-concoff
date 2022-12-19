@@ -44,9 +44,7 @@
                                 <td class=" px-1 py-5">
                                     <div class="flex items-center text-sm">
                                         <div class="relative w-10 h-10 mr-3 rounded-full md:block">
-
                                             <div class="relative w-14 h-11">
-
                                                 @php
                                                 $expiresAt = new \DateTime('tomorrow');
                                                 $imageReference = app('firebase.storage')->getBucket()->object("Images/".$d['imageUrl']);

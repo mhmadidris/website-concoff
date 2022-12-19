@@ -18,7 +18,7 @@ class ArticleController extends Controller
 
   public function index()
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       $data = app("firebase.firestore")
         ->database()
         ->collection("voucher")
@@ -41,7 +41,7 @@ class ArticleController extends Controller
 
   public function create()
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       return view("pages.dashboard.article.create");
     } else {
       return redirect()->back();
@@ -50,7 +50,7 @@ class ArticleController extends Controller
 
   public function edit($id)
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       $dataArticle = Article::where("id", "=", $id)->get();
 
       return view("pages.dashboard.article.edit")->with(
@@ -64,7 +64,7 @@ class ArticleController extends Controller
 
   public function update(Request $request, $id)
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       $editData = Article::where("id", $id)->first();
 
       // Image Article
@@ -136,7 +136,7 @@ class ArticleController extends Controller
 
   public function show($id)
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       $dataArticle = Article::where("id", "=", $id)->get();
 
       return view("pages.dashboard.article.show")->with(
@@ -150,7 +150,7 @@ class ArticleController extends Controller
 
   public function store(Request $request)
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       if ($request->hasfile("logo")) {
         $nameLogo =
           time() .
@@ -177,10 +177,12 @@ class ArticleController extends Controller
         ->newDocument();
 
       $factory->set([
+        "nameCoffeeShop" => Auth::user()->name,
         "titleVoucher" => $request->headline,
         "coins" => $request->coins,
         "validDate" => $request->validDate,
         "desc" => $request->desc,
+        "terms" => $request->terms,
       ]);
       return redirect()
         ->route("dashboard.article.index")
@@ -192,7 +194,7 @@ class ArticleController extends Controller
 
   public function destroy($id)
   {
-    if (Auth::user()->hasRole("admin")) {
+    if (Auth::user()->hasRole("coffeshop")) {
       $data = app("firebase.firestore")
         ->database()
         ->collection("voucher")
