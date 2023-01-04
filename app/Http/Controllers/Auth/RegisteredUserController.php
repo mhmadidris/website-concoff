@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
     //$user->attachRole("admin");
 
     // Uncomment this to register for buyer
-    $user->attachRole("coffeshop");
+    $user->attachRole("admin");
 
     event(new Registered($user));
 
