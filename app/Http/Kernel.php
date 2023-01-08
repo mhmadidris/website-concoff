@@ -68,6 +68,5 @@ class Kernel extends HttpKernel
     "is_admin" => \App\Http\Middleware\is_Admin::class,
     "is_buyer" => \App\Http\Middleware\is_Buyer::class,
     "user" => \App\Http\Middleware\VerifyUser::class,
-    "fireauth" => \App\Http\Middleware\FirebaseAuth::class,
   ];
 }
